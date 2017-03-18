@@ -1,0 +1,66 @@
+﻿bt-dictionary {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: column;
+    padding: 20px;
+
+    table {
+        width: 100%;
+        thead {
+            border-bottom: 1px solid #7899ce;
+            th {
+                text-align: left;
+                font-size: 20px;
+                font-weight: 300;
+                padding: 10px;
+
+                &:first-child {
+                    width: 50px;
+                }
+
+                &.actions {
+                    width: 130px;
+                    text-align: center;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                background: transparent;
+
+                &:nth-child(odd) {
+                    background: #364e76;
+                }
+
+                td {
+                    height: 40px;
+                    vertical-align: middle;
+                    &:first-child {
+                        width: 50px;
+                        text-align: center;
+                    }
+
+                    &.actions {
+                        text-align: center;
+                        width: 130px;
+
+                        .actions {
+                            display: flex;
+                            justify-content: space-between;
+                            a {
+
+                                color: #fff;
+                                text-decoration: none;
+                                display: block;
+                                width: 50px;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

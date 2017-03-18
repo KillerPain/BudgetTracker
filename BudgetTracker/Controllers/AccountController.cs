@@ -331,13 +331,30 @@ namespace BudgetTracker.Controllers
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
 
-            return Ok();
+            using (budgetTrackerEntities db = new budgetTrackerEntities()) {
+                db.UserInfoes.Add(new UserInfo()
+                {
+                    Name = user.UserName,
+                    Balance = 0,
+                    User_Id = user.Id
+                });
+                try {
+                    db.SaveChanges();
+                    return Ok();
+                } catch (Exception e)
+                {
+                    UserManager.Delete(user);
+                    return BadRequest(e.Message);
+                }
+                
+            }
+
+            
         }
 
         // POST api/Account/RegisterExternal

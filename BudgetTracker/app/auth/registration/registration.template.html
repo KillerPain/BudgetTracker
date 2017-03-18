@@ -1,0 +1,31 @@
+﻿<div class="registration-wrapper">
+    <div class="inputs">
+        <div class="labeled">
+            <bt-input ng-model="$ctrl.model.Email" label="'E-mail'"></bt-input>           
+            <i class="material-icons">person</i>
+        </div>
+        <div class="labeled">
+            <bt-input ng-model="$ctrl.model.Password" type="'Password'" label="'Password'"></bt-input>
+            <i class="material-icons">vpn_key</i>
+        </div>
+        <div class="labeled">
+            <bt-input ng-model="$ctrl.model.ConfirmPassword" type="'Password'" label="'Confirm Password'"></bt-input>
+            <i class="material-icons">vpn_key</i>
+        </div>       
+    </div>
+    <div class="buttons">        
+        <a ui-sref="main" ng-click="$ctrl.close()" class="danger">
+            <div class="button-wrapper">
+                <i class="material-icons">block</i>
+                <span>Cancel</span>
+            </div>
+        </a>
+        <button ng-click="$ctrl.register()" class="success">
+            <div class="button-wrapper">
+                <i class="material-icons">check</i>
+                <span>Sign Up</span>
+            </div>
+        </button>
+    </div>
+    
+</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"currencies.component.js","sourceRoot":"","sources":["currencies.component.ts"],"names":[],"mappings":";;IAEa,YAAI,GAAW,cAAc,CAAC;IAC9B,iBAAS,GAAyB;QAC3C,UAAU,EAAE,4CAAoB;QAChC,WAAW,EAAE,wCAAwC;KACxD,CAAA;IAED;sBAAe;QACX,IAAI,EAAE,YAAI;QACV,SAAS,EAAE,iBAAS;KACvB,CAAA"}

@@ -1,0 +1,45 @@
+﻿<div class="menus" ng-class="{active: $ctrl.isShown}">
+    <ul>
+        <li>
+            <a href="#" ng-click="$ctrl.close()">
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="$ctrl.close()">
+                <i class="material-icons">person</i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="$ctrl.close()">
+                <i class="material-icons">monetization_on</i>
+                <span>List of Transactions</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="$ctrl.close()">
+                <i class="material-icons">dialpad</i>
+                <span>Calculator</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" ng-click="$ctrl.toggleDictionaries()">
+                <i class="material-icons">list</i>
+                <span>Dictionaries</span>
+            </a>
+            <ul ng-show="$ctrl.dictionariesShown">
+                <li><a ng-click="$ctrl.go('dictionaries', {type: 'category'})">Categories</a></li>
+                <li><a ng-click="$ctrl.go('dictionaries', {type: 'product'})">Products</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" ng-click="$ctrl.logout()">
+                <i class="material-icons">lock</i>
+                <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="overlay" ng-show="$ctrl.isShown" ng-click="$ctrl.close()"></div>

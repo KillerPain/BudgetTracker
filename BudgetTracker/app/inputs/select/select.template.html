@@ -1,0 +1,11 @@
+﻿<div class="select-wrapper">
+    <label for="bt-select-{{$ctrl.indexInstance}}" class="floating-label active">{{$ctrl.label}}</label>
+    <select id="bt-select-{{$ctrl.indexInstance}}" ng-model="$ctrl.ngModel" ng-options="$ctrl.getItem(item) as $ctrl.getLabel(item) for item in $ctrl.items" ng-change="$ctrl.changed()">
+        <option value ng-if="$ctrl.nullText && !$ctrl.items.length">{{$ctrl.nullText}}</option>
+    </select>
+</div>
+<div class="button-wrapper" ng-show="$ctrl.hasButton">
+    <button ng-click="$ctrl.buttonClick()">
+        <i class="material-icons">{{$ctrl.buttonIcon}}</i>
+    </button>
+</div>

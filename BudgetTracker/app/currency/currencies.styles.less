@@ -1,0 +1,63 @@
+﻿bt-currencies {
+    .title {
+    padding: 20px;
+    text-align: center;
+}
+
+.currency {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .amount {
+        font-size: 35px;
+        font-weight: 100;
+        flex-grow: 1;
+    }
+
+    .currency-symbol {
+        width: 50px;
+        text-align: center;
+        i {
+            font-size: 30px;
+        }
+    }
+
+
+    .trend {
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .trend-amount {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            align-self: stretch;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+
+        .sub-title {
+            font-size: 10px;
+        }
+
+        &.up {
+            color: #69d1f1;
+        }
+
+        &.down {
+            color: #e6f169;
+        }
+
+        &.flat {
+            color: #69d1f1;
+        }
+    }
+}
+}

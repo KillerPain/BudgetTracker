@@ -1,0 +1,55 @@
+﻿@keyframes SlideIn {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0;
+    }
+}
+bt-modal-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 300px;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    margin: auto;
+    animation: SlideIn 200ms ease;
+    margin: 0;
+    margin-left: 2px;
+    align-items:stretch; 
+    color: #333;
+    
+    
+
+    .modal-header {
+        display: flex;
+
+        padding: 10px;
+
+        .title {
+            flex-grow: 1;
+            font-size: 20px;
+            font-weight: 300;
+            margin-right: 10px;
+        }
+
+        i {
+            cursor: pointer;
+        }
+
+    }
+
+    .modal{
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+}
+
+
+
+
+

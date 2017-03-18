@@ -15,8 +15,14 @@ namespace BudgetTracker
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "default/{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Navigation",
+                url: "{*url}",
+                defaults: new { controller = "Home", action = "Index"}
             );
         }
     }

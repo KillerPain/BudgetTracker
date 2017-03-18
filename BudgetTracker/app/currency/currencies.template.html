@@ -1,0 +1,16 @@
+﻿<div class="title">
+    Exchange rates for KZT
+</div>
+<div class="currency" ng-repeat="currency in $ctrl.getCurrencies()">
+    <div class="amount">{{currency.Amount}}</div>
+    <div class="currency-symbol">
+        <i class="fa fa-{{currency.Currency}}"></i>
+    </div>
+    <div class="trend {{currency.TrendClass}}">
+        <span class="trend-amount">
+            <i class="material-icons">{{currency.TrendIcon}}</i>
+            {{currency.Change}}
+        </span>
+        <span class="sub-title">from yesterday</span>
+    </div>
+</div>

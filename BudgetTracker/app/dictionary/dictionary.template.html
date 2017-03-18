@@ -1,0 +1,36 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th ng-repeat="item in $ctrl.getHeaders()">{{item}}</th>
+            <th class="actions">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="item in $ctrl.getItems()">
+            <td>{{$index + 1}}</td>
+            <td ng-repeat="field in $ctrl.getHeaders()">{{$ctrl.getField($index, item)}}</td>
+            <td class="actions">
+                <div class="actions" ng-hide="$ctrl.isRemoving(item)">
+                    <a href="#" ng-click="$ctrl.edit(item)">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a href="#" ng-click="$ctrl.confirmRemove(item)">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+                <div class="actions" ng-show="$ctrl.isRemoving(item)">
+                    <a href="#" ng-click="$ctrl.remove(item)">
+                        <i class="material-icons">check</i>
+                    </a>
+                    <a href="#" ng-click="$ctrl.cancelRemove(item)">
+                        <i class="material-icons">block</i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        
+    </tbody>
+
+</table>

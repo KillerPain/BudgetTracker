@@ -1,0 +1,7 @@
+﻿[
+  {
+    "outputFile": "app/app.styles.css",
+    "inputFile": "app/app.styles.less",
+    "sourceMap": true
+  }
+]

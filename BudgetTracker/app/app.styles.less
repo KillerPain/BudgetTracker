@@ -1,0 +1,176 @@
+﻿* {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: #fff;
+}
+
+
+app {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    aside.main-menu {
+        display:flex;
+            flex-direction: column;
+            flex-shrink: 0;
+
+        &.active {
+            
+        }
+    }
+
+    main {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        //flex-shrink: 0;
+        background: #253856;
+
+        header.page-header {
+            display: flex;
+            flex-shrink: 0;
+            padding-top: 20px;
+            div.menu-icon {
+                padding: 20px;
+                #menu {
+                    cursor:pointer;
+                }
+                i {
+                    color: #ccc;
+                }
+            }
+
+            nav.page-nav {
+                padding: 20px;
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+                .navigation {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 20px;
+                    padding-left: 0px;
+                    .sub-header {
+                        font-size: 20px;
+                        background-color: #288aa9;
+                        color: #fff;
+                        padding: 3px;
+                        margin-left: 22px;
+                    }
+                    ul.menu {
+                        display: flex;
+                        flex-grow: 1;
+                        justify-content: flex-end;
+                        align-items: center;
+                        li {
+                            a {
+                                display: block;
+                                padding: 5px 10px;
+                                color: #eee;
+                                text-decoration: none;
+                                text-transform: uppercase;
+                                border-bottom: 3px solid transparent;
+
+                                &.active {
+                                    color: #a81c1c;
+                                    font-weight: bold;
+                                    border-bottom-color: #a81c1c;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .logo {
+                    font-weight: 100;
+                    text-transform: uppercase;
+                    font-size: 35px;      
+                    a {
+                        text-decoration: none;
+                        color: #fff;
+                    }              
+                    span {
+                        font-weight: bold;
+                    }
+                }
+
+            }
+
+        }
+
+        ui-view {
+            flex-grow: 1;
+        }
+    }
+
+    aside.currency-aside {
+        width: 300px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        background: #288aa9;
+
+        .top-panel {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .bottom-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background: #78b074;
+            .timeleft {
+                display: flex;
+                span {
+                    padding: 10px;
+                    display: block;
+                    font-size: 50px;
+                    display: flex;
+                    align-items: flex-start;
+                    font-weight: 300;
+
+                    sup {
+                        font-size: 25px;
+                    }
+                }
+            }
+            
+        }
+
+    }
+
+}
+
+ui-view {
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+@import "modal/modal.styles.less";
+@import "modal/modal.item/model.item.styles.less";
+@import "transactions/transactions.styles.less";
+@import "inputs/inputs.styles.less";
+@import "currency/currencies.styles.less";
+@import "auth/auth.styles.less";
+@import "menu/menu.styles.less";
+@import "dictionary/dictionary.styles.less";
+@import "buttons.styles.less";
+@import "about/about.styles.less";
+@import "line-graph/line-graph.styles.less";

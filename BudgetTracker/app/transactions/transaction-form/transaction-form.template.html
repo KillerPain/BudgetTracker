@@ -1,0 +1,40 @@
+﻿<bt-input label="'Date'"
+          type="'datetime-local'"
+          ng-model="$ctrl.model.TransactionDate">
+</bt-input>
+<bt-select has-button="true" 
+           button-click="$ctrl.addCategory()" 
+           button-icon="'add'"
+           choosed="$ctrl.categoryChoosed($item)"
+           items="$ctrl.categories"
+           label="'Category'"
+           ng-model="$ctrl.model.Category"
+           label-field="'Title'">
+</bt-select>
+<bt-select has-button="true"
+           button-click="$ctrl.addProduct($ctrl.model.Category)"
+           button-icon="'add'"
+           choosed="$ctrl.productChoosed($item)"
+           items="$ctrl.getProducts($ctrl.model.Category.ID)"
+           label="'Product'"
+           ng-model="$ctrl.model.ProductID"
+           model-field="'ID'"
+           label-field="'Title'"
+           null-text="'Add product first'">
+</bt-select>
+<bt-select has-button="false"
+           choosed="$ctrl.currencyChoosed($item)"
+           items="$ctrl.currencies"
+           label="'Currency'"
+           ng-model="$ctrl.model.Currency"
+           label-field="'Title'">
+</bt-select>
+<bt-input label="'Amount'"
+          type="'number'"
+          ng-model="$ctrl.model.Amount">
+</bt-input>
+
+<div class="buttons">
+    <button class="danger" ng-click="$ctrl.cancel()">Cancel</button>
+    <button class="success" ng-click="$ctrl.createTransaction()">Add</button>
+</div>

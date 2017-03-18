@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +36,19 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +57,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -49,14 +77,32 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -206,26 +252,206 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CategoriesController.cs" />
+    <Compile Include="Controllers\Api\CurrenciesController.cs" />
+    <Compile Include="Controllers\Api\Extentions.cs" />
+    <Compile Include="Controllers\Api\ProductsController.cs" />
+    <Compile Include="Controllers\Api\TransactionsController.cs" />
+    <Compile Include="Controllers\Api\UserInfoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestTablesController.cs" />
+    <Compile Include="Controllers\TestTablesViewController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Currency.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrencyRSS.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestTable.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transaction.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserInfo.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\kz.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kz.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.styles.css">
+      <DependentUpon>app.styles.less</DependentUpon>
+    </Content>
+    <Content Include="app\app.styles.min.css">
+      <DependentUpon>app.styles.css</DependentUpon>
+    </Content>
+    <Content Include="app\app.template.html" />
+    <TypeScriptCompile Include="app\about\about.component.ts" />
+    <TypeScriptCompile Include="app\about\about.controller.ts" />
+    <Content Include="app\about\about.template.html" />
+    <TypeScriptCompile Include="app\about\about.module.ts" />
+    <TypeScriptCompile Include="app\app.controller.ts" />
+    <TypeScriptCompile Include="app\auth\auth.service.ts" />
+    <TypeScriptCompile Include="app\auth\login\login.component.ts" />
+    <TypeScriptCompile Include="app\auth\auth.module.ts" />
+    <TypeScriptCompile Include="app\auth\login\login.controller.ts" />
+    <TypeScriptCompile Include="app\auth\registration\registration.component.ts" />
+    <TypeScriptCompile Include="app\auth\registration\registration.controller.ts" />
+    <TypeScriptCompile Include="app\category\category-form.component.ts" />
+    <TypeScriptCompile Include="app\category\category-form.controller.ts" />
+    <TypeScriptCompile Include="app\category\category.module.ts" />
+    <TypeScriptCompile Include="app\dictionary\dictionary.component.ts" />
+    <TypeScriptCompile Include="app\dictionary\dictionary.controller.ts" />
+    <TypeScriptCompile Include="app\dictionary\dictionary.module.ts" />
+    <TypeScriptCompile Include="app\donut-chart\donut-chart.component.ts" />
+    <TypeScriptCompile Include="app\donut-chart\donut-chart.module.ts" />
+    <TypeScriptCompile Include="app\line-graph\line-graph.component.ts" />
+    <TypeScriptCompile Include="app\line-graph\line-graph.controller.ts" />
+    <TypeScriptCompile Include="app\line-graph\line-graph.module.ts" />
+    <TypeScriptCompile Include="app\product\product-form.component.ts" />
+    <TypeScriptCompile Include="app\product\product.module.ts" />
+    <TypeScriptCompile Include="app\inputs\inputs.module.ts" />
+    <TypeScriptCompile Include="app\inputs\input\input.component.ts" />
+    <TypeScriptCompile Include="app\inputs\input\input.controller.ts" />
+    <TypeScriptCompile Include="app\inputs\select\select.component.ts" />
+    <TypeScriptCompile Include="app\inputs\select\select.controller.ts" />
+    <Content Include="app\auth\auth.styles.css">
+      <DependentUpon>auth.styles.less</DependentUpon>
+    </Content>
+    <Content Include="app\auth\auth.styles.min.css">
+      <DependentUpon>auth.styles.css</DependentUpon>
+    </Content>
+    <Content Include="app\auth\login\login.styles.css">
+      <DependentUpon>login.styles.less</DependentUpon>
+    </Content>
+    <Content Include="app\auth\login\login.styles.min.css">
+      <DependentUpon>login.styles.css</DependentUpon>
+    </Content>
+    <Content Include="app\auth\registration\registration.styles.css">
+      <DependentUpon>registration.styles.less</DependentUpon>
+    </Content>
+    <Content Include="app\auth\registration\registration.styles.min.css">
+      <DependentUpon>registration.styles.css</DependentUpon>
+    </Content>
+    <Content Include="app\category\category.form.modal.template.html" />
+    <Content Include="app\category\category-form.template.html" />
+    <TypeScriptCompile Include="app\currency\currencies.controller.ts" />
+    <TypeScriptCompile Include="app\currency\currencies.component.ts" />
+    <Content Include="app\auth\login\login.styles.less" />
+    <Content Include="app\auth\auth.styles.less" />
+    <Content Include="app\auth\registration\registration.styles.less" />
+    <Content Include="app\buttons.styles.less" />
+    <Content Include="app\about\about.styles.less" />
+    <None Include="app\currency\currencies.styles.less" />
+    <TypeScriptCompile Include="app\currency\currencies.module.ts" />
+    <Content Include="app\currency\currencies.template.html" />
+    <Content Include="app\dictionary\dictionary.template.html" />
+    <Content Include="app\product\product-form.template.html" />
+    <Content Include="app\product\product-form.modal.template.html" />
+    <Content Include="app\inputs\input\input.template.html" />
+    <Content Include="app\inputs\select\select.template.html" />
+    <TypeScriptCompile Include="app\modal\modal.item\modal.item.component.ts" />
+    <TypeScriptCompile Include="app\modal\modal.item\modal.item.controller.ts" />
+    <TypeScriptCompile Include="app\repositories.service.ts" />
+    <TypeScriptCompile Include="app\require.config.ts" />
+    <Content Include="app\auth\login\login.template.html" />
+    <Content Include="app\auth\registration\registration.template.html" />
+    <Content Include="app\modal\modal.item\modal.item.template.html" />
+    <Content Include="app\modal\modal.item\model.item.styles.css">
+      <DependentUpon>model.item.styles.less</DependentUpon>
+    </Content>
+    <Content Include="app\modal\modal.item\model.item.styles.min.css">
+      <DependentUpon>model.item.styles.css</DependentUpon>
+    </Content>
+    <Content Include="app\modal\modal.template.html" />
+    <Content Include="app\menu\menu.template.html" />
+    <Content Include="app\transactions\modal.template.html" />
+    <Content Include="app\transactions\transaction-form\transaction-form.template.html" />
+    <Content Include="app\transactions\transactions.template.html" />
+    <Content Include="App_Data\rates_all.xml" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Entities.edmx</DependentUpon>
+      <LastGenOutput>Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Entities.edmx</DependentUpon>
+      <LastGenOutput>Entities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Reset.css" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -247,15 +473,54 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <EntityDeploy Include="Models\Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entities.edmx.diagram">
+      <DependentUpon>Entities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="app\app.styles.less" />
+    <Content Include="app\modal\modal.styles.less" />
+    <TypeScriptCompile Include="app\modal\modal.service.ts" />
+    <Content Include="app\inputs\inputs.styles.less" />
+    <Content Include="app\inputs\select\select.styles.less" />
+    <Content Include="app\inputs\input\input.styles.less" />
+    <TypeScriptCompile Include="app\product\product-form.controller.ts" />
+    <Content Include="app\dictionary\dictionary.styles.less" />
+    <Content Include="app\line-graph\line-graph.styles.less" />
+    <None Include="app\modal\modal.item\model.item.styles.less" />
+    <Content Include="app\transactions\transaction-form\transaction-form.styles.less" />
+    <Content Include="app\transactions\transactions.styles.less" />
+    <Content Include="app\menu\menu.styles.less" />
+    <TypeScriptCompile Include="app\models.ts" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.4.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lodash.core.js" />
+    <Content Include="Scripts\lodash.core.min.js" />
+    <Content Include="Scripts\lodash.js" />
+    <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -273,9 +538,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="Views\TestTablesView\Create.cshtml" />
+    <Content Include="Views\TestTablesView\Delete.cshtml" />
+    <Content Include="Views\TestTablesView\Details.cshtml" />
+    <Content Include="Views\TestTablesView\Edit.cshtml" />
+    <Content Include="Views\TestTablesView\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -283,13 +550,55 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.ts" />
+    <TypeScriptCompile Include="app\modal\modal.controller.ts" />
+    <TypeScriptCompile Include="app\modal\modal.component.ts" />
+    <TypeScriptCompile Include="app\modal\modal.module.ts" />
+    <TypeScriptCompile Include="app\menu\menu.component.ts" />
+    <TypeScriptCompile Include="app\menu\menu.controller.ts" />
+    <TypeScriptCompile Include="app\menu\menu.module.ts" />
+    <TypeScriptCompile Include="app\transactions\transaction-form\transaction-form.component.ts" />
+    <TypeScriptCompile Include="app\transactions\transaction-form\transaction-form.controller.ts" />
+    <TypeScriptCompile Include="app\transactions\transaction.controller.ts" />
+    <TypeScriptCompile Include="app\transactions\transactions.component.ts" />
+    <TypeScriptCompile Include="app\transactions\transactions.module.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui-router\angular-ui-router.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\lodash\lodash.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Providers\kz.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>kz.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

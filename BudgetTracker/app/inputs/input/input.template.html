@@ -1,0 +1,13 @@
+﻿<div class="input-wrapper">
+    <label for="bt-input-{{$ctrl.indexInstance}}" class="floating-label" ng-class="{active: $ctrl.ngModel === 0 || $ctrl.ngModel.length || $ctrl.focused}">{{$ctrl.label}}</label>
+    <input 
+           id="bt-input-{{$ctrl.indexInstance}}" 
+           type="{{$ctrl.type}}" 
+           ng-model="$ctrl.ngModel" 
+           ng-change="$ctrl.changed()" ng-focus="$ctrl.focused = true" ng-blur="$ctrl.focused = false" />
+</div>
+<div class="button-wrapper" ng-show="$ctrl.hasButton">
+    <button ng-click="$ctrl.buttonClick()">
+        <i class="material-icons">{{$ctrl.buttonIcon}}</i>
+    </button>
+</div>

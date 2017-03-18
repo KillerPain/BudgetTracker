@@ -1,0 +1,42 @@
+﻿<aside class="main-menu">
+    <bt-menu></bt-menu>
+</aside>
+<main>
+    <header class="page-header">
+        <div class="menu-icon" ng-click="$ctrl.showMenu()">
+            <i class="material-icons" id="menu">menu</i>
+        </div>
+        <nav class="page-nav">
+            <div class="logo">
+                <a ui-sref="main">Track<span>Money</span></a>
+            </div>
+            <div class="navigation">
+                <div class="sub-header">In your best interest!</div>
+                <ul class="menu" ng-if="$ctrl.isAuthorized()">
+                    <li><a ui-sref="main.param({type:'today'})" ng-class="{active: $ctrl.isActive('main') || $ctrl.isActive('main.param', 'type', 'today')}">Today</a></li>
+                    <li><a ui-sref="main.param({type:'week'})" ng-class="{active: $ctrl.isActive('main.param', 'type', 'week')}">Week</a></li>
+                    <li><a ui-sref="main.param({type:'month'})" ng-class="{active: $ctrl.isActive('main.param', 'type', 'month')}">Month</a></li>
+                    <li><a ui-sref="main.param({type:'year'})" ng-class="{active: $ctrl.isActive('main.param', 'type', 'year')}">Year</a></li>
+                </ul>
+                <ul class="menu" ng-if="!$ctrl.isAuthorized()">
+                    <li><a ui-sref="user.login" ng-class="{active: $ctrl.isActive('user.login')}">Log in</a></li>
+                    <li><a ui-sref="user.register" ng-class="{active: $ctrl.isActive('user.register')}">Sign up</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    <ui-view></ui-view>
+</main>
+<aside class="currency-aside">
+    <div class="top-panel">
+        <bt-currencies></bt-currencies>
+    </div>
+    <div class="bottom-panel">
+        <div class="timeleft">
+            <span>1 <sup>d</sup></span>
+            <span>2 <sup>h</sup></span>
+        </div>
+    </div>
+    
+</aside>

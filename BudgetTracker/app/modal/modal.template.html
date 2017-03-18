@@ -1,0 +1,4 @@
+﻿<div class="modals-wrapper" ng-show="$ctrl.getModals().length">
+    <div class="overlay" ng-click="$ctrl.close()"></div>
+    <bt-modal-item ng-repeat="item in $ctrl.getModals()" config="item"></bt-modal-item>
+</div>

@@ -1,0 +1,20 @@
+﻿<div class="category-charts">
+    <div class="chart">
+        <bt-chart-donut stroke="'rgba(255, 255, 255, 0.1)'" stroke-fill="'#ffd241'" progress="73"></bt-chart-donut>
+        <span class="caption">Food</span>
+    </div>
+    <div class="chart">
+        <bt-chart-donut stroke="'rgba(255, 255, 255, 0.1)'" stroke-fill="'#ff4848'" progress="21"></bt-chart-donut>
+        <span class="caption">Drinks</span>
+    </div>
+    <div class="chart">
+        <bt-chart-donut stroke="'rgba(255, 255, 255, 0.1)'" stroke-fill="'#65ceff'" progress="66"></bt-chart-donut>
+        <span class="caption">Games</span>
+    </div>
+</div>
+<div class="product-chart">
+    <bt-line-graph coords="$ctrl.coords" 
+                   on-clicked="$ctrl.clicked($rect)" 
+                   delimeters="$ctrl.delimeters" 
+                   captions="$ctrl.captions"></bt-line-graph>
+</div>

@@ -1,0 +1,9 @@
+﻿<bt-select has-button="false"
+           items="$ctrl.categories"
+           label="'Category'"
+           ng-model="$ctrl.model.Category"
+           label-field="'Title'">
+</bt-select>
+<bt-input label="'Product title'" ng-model="$ctrl.model.Title"></bt-input>
+<button class="btn btn-success" ng-click="$ctrl.update()" ng-show="$ctrl.type == 'edit'">Update</button>
+<button class="btn btn-success" ng-click="$ctrl.create()" ng-show="$ctrl.type != 'edit'">Add</button>

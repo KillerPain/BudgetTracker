@@ -1,0 +1,38 @@
+﻿@import "transaction-form/transaction-form.styles.less";
+
+bt-transactions {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+    max-height: 100%;
+    .category-charts {
+        display: flex;
+        justify-content: space-around;
+        flex-shrink: 0;
+        .chart {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .caption {
+                font-size: 20px;
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+    }
+
+    .product-chart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+        height: 100%;
+        overflow: hidden;
+        max-height: 100%;
+        padding: 30px;
+    }
+
+}
